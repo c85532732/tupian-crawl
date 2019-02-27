@@ -1,10 +1,10 @@
 var app = {
-    dialect:"mssql",
-    user: 'sa',
-    password: 'McMadmin123456',
-    server: '172.19.131.156',
-    database: 'crawl',
-    port: 1433,
+    dialect:"mysql",
+    user: 'root',
+    password: 'root',
+    server: '127.0.0.1',
+    database: 'tupian',
+    port: 3306,
     options: {
         encrypt: true // Use this if you're on Windows Azure
     },

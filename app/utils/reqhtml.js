@@ -11,7 +11,11 @@ module.exports = async function (url, charset) {
         encoding: null
     }).then((body) => {
         return iconv.decode(body, charset);
+    }).catch(function (err) {
+        return null;
     })
+
+    if(!page)return null;
 
     let $ = cheerio.load(page, {decodeEntities: false});
     return $;
