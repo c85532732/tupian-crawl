@@ -1,6 +1,7 @@
 let sit_config = require("../../config/site.json")
     , utils = require("../utils")
     ,info=require('./info')
+    ,site=sit_config.site_2717.wenshen
 ;
 
 module.exports = {
@@ -28,9 +29,14 @@ module.exports = {
                 option.summary=$(".articleV4Desc").text();
             }
         }
-        option.logo=img_arr[0];
-        option.imglist=img_arr.join('|');
-        await info.save_one(option);
+
+        if(option.title && img_arr.length>0){
+            option.cate_id=site.cate_id;
+            option.logo=img_arr[0];
+            option.imglist=img_arr.join('|');
+
+            await info.save_one(option);
+        }
     },
     req_detail_html: async function () {
         let base = this;
@@ -38,14 +44,14 @@ module.exports = {
 
         if (!arr_list) return null;
 
-        for (let i = 0; i < 1; i++) {
+        for (let i = 0; i < arr_list.length; i++) {
             let tmp_url = arr_list[i];
-            base.req_img_list(tmp_url);
+            console.log(tmp_url);
+            await base.req_img_list(tmp_url);
         }
     },
     req_list_html: async function () {
-        let url = sit_config.site_2717.wenshen;
-        let $ = await utils.reqhtml(url, "gb2312");
+        let $ = await utils.reqhtml(site.uri, "gb2312");
         if (!$) {
             return null;
         }

@@ -1,18 +1,40 @@
-var app = {
-    dialect:"mysql",
-    user: 'root',
-    password: 'root',
-    server: '127.0.0.1',
+/**
+ * 数据库连接信息
+ */
+var config = {
+
+    /**
+     * 数据库类型
+     */
+    dialect: 'mysql',
+
+    /**
+     * 数据库
+     */
     database: 'tupian',
-    port: 3306,
-    options: {
-        encrypt: true // Use this if you're on Windows Azure
-    },
-    pool: {
-        min: 0,
-        max: 10,
-        idleTimeoutMillis: 3000
-    }
+
+    /**
+     * 用户名
+     */
+    username: 'root',
+
+    /**
+     * 口令 yorkg@123 Yorkg@123;;2018
+     */
+    password: 'root',
+
+    /**
+     * 主机名
+     * 47.100.189.128
+     * 172.19.105.75：3306
+     * 192.168.70.251：7050
+     */
+    host: '127.0.0.1',
+
+    /**
+     * 端口号，MySQL默认3306 7050
+     */
+    port: 3306
 };
 
-module.exports = app;
+module.exports = config;
